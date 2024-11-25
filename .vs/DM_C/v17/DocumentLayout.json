@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Code\\DM_C\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F92D925C-54D6-402A-8389-8CDCB51EE562}|DM_C\\DM_C.vcxproj|C:\\Code\\DM_C\\DM_C\\DM_C.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F92D925C-54D6-402A-8389-8CDCB51EE562}|DM_C\\DM_C.vcxproj|solutionrelative:DM_C\\DM_C.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DM_C.cpp",
+              "DocumentMoniker": "C:\\Code\\DM_C\\DM_C\\DM_C.cpp",
+              "RelativeDocumentMoniker": "DM_C\\DM_C.cpp",
+              "ToolTip": "C:\\Code\\DM_C\\DM_C\\DM_C.cpp",
+              "RelativeToolTip": "DM_C\\DM_C.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-11-25T12:18:34.888Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
