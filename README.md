@@ -24,12 +24,11 @@ HYPOTHESE DE RESOLUTION
 J'ai pour objectif de faire fonctionner le moteur de recherche dans la console avec un rajout front si le temps est suffisant.
 J'ai une vision des choses pour accomplir le code de faire une fonction de Recherche exacte, de sensibilité ou non à la casse et des wildcards ce qui permettrait de trouver un mot sans même l'écrire en entier.
 Si on reprend point par point la recherche exacte sera basé sur les caractères inscrit par l'utilisateur pour former ce qu'il désir trouver.
-Pour la sensibilité à la casse cela relève plus de la cybersécurité pour éviter les injections de code dans le moteur pouvant détruire l'application, l'ordinateur ou juste changer des paramètrages.
 Les wildcards lui sera pertinant pour ne pas à avoir à écrire tout le mot.
 
 DEVELOPPEMENT
 
-On utilisera le langage C avec divers librairie afin de pouvoir effectuer les recherches et cela sera de même lors de la mise en place du front.
-Dans le code il me faudra une structure qui me permet de vérifier dans les divers fichiers la recherche du mot rechercher en fouillant dans la mémoire de l'ordinateur.
-Pour la sécurité, il faut mettre des restrictions pour ne pas pouvoir injecter de code ni même pouvoir aller dans des fichiers non autorisé comme ceux du code source de l'ordinateur.
+On utilisera le langage C avec divers librairie afin de pouvoir effectuer les recherches.
+Dans le code il me faudra une structure qui me permet de vérifier dans les divers fichiers la recherche du mot rechercher en fouillant dans le dossier qu'on veut vérifié en particulier.
 Pour finir avec le développement il faut trouver un moyen d'effectuer des recherches grace à "*" après le début de mot rentrée afin de raccourcir le temps de recherche et de ne pas s'embêter à écrire tout le mot.
+Petit rajout, il ne faut pas oublier de libérer la mémoire.
