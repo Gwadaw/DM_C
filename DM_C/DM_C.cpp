@@ -1,3 +1,5 @@
+//Ajout de bibliothèque
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -10,22 +12,21 @@
 // Définition de la structure pour les options de recherche
 typedef struct {
     char* modele;
-    bool ignore_cas;
+    bool ignoreCas;
     bool utiliserw;
 } OptionsRecherche;
 
 // Prototypes des fonctions utilisées dans le programme
 void Minuscule(char* str);
-int Recherche(const char* mot, const char* modele, bool ignore_cas);
-int Wildcards(const char* texte, const char* modele, bool ignore_cas);
+int Recherche(const char* mot, const char* modele, bool ignoreCas);
+int Wildcards(const char* texte, const char* modele, bool ignoreCas);
 void Affichage(const char* ligne, const OptionsRecherche* options, int numerol);
 
-// Fonction principale du programme
 int main() {
     char nomfichier[256];// Stocke le chemin du fichier
     OptionsRecherche options = { NULL, false, false };// Initialisation des options de recherche
 
-    // Demande à l'utilisateur d'entrer le chemin du fichier
+    // Demande à l'utilisateur d'entrer le chemin du fichier par exemple C:\Users\user\data\fichier.txt
     printf("Entrez le chemin du fichier : ");
     if (!fgets(nomfichier, sizeof(nomfichier), stdin)) {
         printf("Erreur : saisie du chemin invalide.\n");
@@ -48,7 +49,7 @@ int main() {
         return 1;
     }
 
-    // Demande à l'utilisateur d'entrer le modèle ou le motif de recherche
+    // Demande à l'utilisateur d'entrer un mot ou une wildcars de recherche
     printf("Entrez le mot ou la wildcards à rechercher : ");
     if (!fgets(options.modele, 256, stdin)) {
         printf("Erreur : saisie du wildcards invalide.\n");
@@ -60,14 +61,14 @@ int main() {
 
     // Demande si la recherche doit ignorer la casse
     printf("Ignorer la casse ? (0=oui, 1=non) : ");
-    if (scanf_s("%d", (int*)&options.ignore_cas) != 1) {
+    if (scanf_s("%d", (int*)&options.ignoreCas) != 1) {
         printf("Erreur : saisie invalide.\n");
         free(options.modele);
         fclose(fichier);
         return 1;
     }
 
-    // Demande si la recherche doit inclure des wildcards
+    // Demande si la recherche doit utiliser des wildcards
     printf("Utiliser des wildcards ? (0=oui, 1=non) : ");
     if (scanf_s("%d", (int*)&options.utiliserw) != 1) {
         printf("Erreur : saisie invalide.\n");
@@ -82,10 +83,10 @@ int main() {
 
     while (fgets(tampon, sizeof(tampon), fichier)) {
         numerol++;
-        Affichage(tampon, &options, numerol);// Recherche des correspondances dans la ligne actuelle
+        Affichage(tampon, &options, numerol);// Recherche des correspondances dans la ligne
         mottrouver = true;
     }
-    // Si aucune correspondance n'a été trouvée
+    // affichage de l'echec à trouver une correspondance
     if (!mottrouver) {
         printf("Aucune correspondance trouvée.\n");
     }
@@ -110,21 +111,21 @@ void Affichage(const char* ligne, const OptionsRecherche* options, int numerol) 
     // Parcourt chaque mot de la ligne
     while (token != NULL) {
         int match = options->utiliserw
-            ? Wildcards(token, options->modele, options->ignore_cas)// Recherche avec wildcards
-            : Recherche(token, options->modele, options->ignore_cas);// Recherche exacte
-        // Si une correspondance est trouvée, l'afficher
+            ? Wildcards(token, options->modele, options->ignoreCas)
+            : Recherche(token, options->modele, options->ignoreCas);
+        // afficher si une correspondance est trouvée
         if (match) {
             printf("Trouvé à la ligne %d : %s\n", numerol, token);
         }
 
         token = strtok_s(NULL, " \t\n\r", &next_token);// Passe au mot suivant
     }
-
-    free(tampon);// Libère la mémoire allouée pour le tampon
+    // Libère la mémoire allouée pour le tampon
+    free(tampon);
 }
-// Fonction pour effectuer une recherche exacte
-int Recherche(const char* mot, const char* modele, bool ignore_cas) {
-    if (ignore_cas) {
+// Effectuer une recherche
+int Recherche(const char* mot, const char* modele, bool ignoreCas) {
+    if (ignoreCas) {
         // Création de copies pour ignorer la casse
         char* motc = (char*)malloc(strlen(mot) + 1);
         char* modelec = (char*)malloc(strlen(modele) + 1);
@@ -150,10 +151,9 @@ int Recherche(const char* mot, const char* modele, bool ignore_cas) {
     }
     return strstr(mot, modele) != NULL;
 }
-// Fonction pour effectuer une recherche avec des wildcards
-int Wildcards(const char* texte, const char* modele, bool ignore_cas) {
-    if (ignore_cas) {
-        // Création de copies pour ignorer la casse
+// Effectuer une recherche avec des wildcards
+int Wildcards(const char* texte, const char* modele, bool ignoreCas) {
+    if (ignoreCas) {
         char* textec = (char*)malloc(strlen(texte) + 1);
         char* modelec = (char*)malloc(strlen(modele) + 1);
 
@@ -174,7 +174,7 @@ int Wildcards(const char* texte, const char* modele, bool ignore_cas) {
         free(modelec);
         return resultat;
     }
-    // Parcourt le modèle et compare avec le texte
+    // Parcourt le Wildcards et compare avec le texte
     while (*modele) {
         if (*modele == '*') {
             while (*modele == '*') modele++;
@@ -195,7 +195,7 @@ int Wildcards(const char* texte, const char* modele, bool ignore_cas) {
     }
     return *texte == '\0';
 }
-// Fonction pour convertir une chaîne en minuscules
+// Conversion en une chaîne en minuscules
 void Minuscule(char* str) {
     for (int i = 0; str[i]; i++) {
         str[i] = tolower((char)str[i]);

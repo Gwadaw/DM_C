@@ -13,10 +13,13 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Fichiers sources\src">
+      <UniqueIdentifier>{6ab1a61b-a068-4215-968a-a0334085949e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DM_C.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Fichiers sources\src</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
